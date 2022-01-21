@@ -2,143 +2,116 @@
 
 namespace App\Entity;
 
+use App\Repository\AlquileresRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Alquileres
- *
- * @ORM\Table(name="alquileres")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=AlquileresRepository::class)
  */
 class Alquileres
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
+    /**
+    *@ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="alquileres") 
+    */
+    private $user;
+
+     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Pelicula", mappedBy="alquiler")
+     */
+    private $peliculas;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Cliente;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nombre", type="string", length=60, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $nombre;
+    private $Peliculas;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="Cliente", type="string", length=60, nullable=false)
+     * @ORM\Column(type="integer")
      */
-    private $cliente;
+    private $Valor_total;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="Películas", type="string", length=60, nullable=false)
+     * @ORM\Column(type="datetime")
      */
-    private $pel�culas;
+    private $Fecha_inicio;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="Valor Total", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(type="datetime")
      */
-    private $valorTotal;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="Fecha Inicio", type="date", nullable=false)
-     */
-    private $fechaInicio;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="Fecha Fin", type="date", nullable=false)
-     */
-    private $fechaFin;
+    private $Fecha_fin;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNombre(): ?string
-    {
-        return $this->nombre;
-    }
-
-    public function setNombre(string $nombre): self
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
     public function getCliente(): ?string
     {
-        return $this->cliente;
+        return $this->Cliente;
     }
 
-    public function setCliente(string $cliente): self
+    public function setCliente(string $Cliente): self
     {
-        $this->cliente = $cliente;
+        $this->Cliente = $Cliente;
 
         return $this;
     }
 
-    public function getPel�culas(): ?string
+    public function getPeliculas(): ?string
     {
-        return $this->pel�culas;
+        return $this->Peliculas;
     }
 
-    public function setPel�culas(string $pel�culas): self
+    public function setPeliculas(string $Peliculas): self
     {
-        $this->pel�culas = $pel�culas;
+        $this->Peliculas = $Peliculas;
 
         return $this;
     }
 
-    public function getValorTotal(): ?float
+    public function getValorTotal(): ?int
     {
-        return $this->valorTotal;
+        return $this->Valor_total;
     }
 
-    public function setValorTotal(float $valorTotal): self
+    public function setValorTotal(int $Valor_total): self
     {
-        $this->valorTotal = $valorTotal;
+        $this->Valor_total = $Valor_total;
 
         return $this;
     }
 
     public function getFechaInicio(): ?\DateTimeInterface
     {
-        return $this->fechaInicio;
+        return $this->Fecha_inicio;
     }
 
-    public function setFechaInicio(\DateTimeInterface $fechaInicio): self
+    public function setFechaInicio(\DateTimeInterface $Fecha_inicio): self
     {
-        $this->fechaInicio = $fechaInicio;
+        $this->Fecha_inicio = $Fecha_inicio;
 
         return $this;
     }
 
     public function getFechaFin(): ?\DateTimeInterface
     {
-        return $this->fechaFin;
+        return $this->Fecha_fin;
     }
 
-    public function setFechaFin(\DateTimeInterface $fechaFin): self
+    public function setFechaFin(\DateTimeInterface $Fecha_fin): self
     {
-        $this->fechaFin = $fechaFin;
+        $this->Fecha_fin = $Fecha_fin;
 
         return $this;
     }
-
-
 }

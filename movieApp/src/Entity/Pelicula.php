@@ -2,66 +2,53 @@
 
 namespace App\Entity;
 
+use App\Repository\PeliculaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Pelicula
- *
- * @ORM\Table(name="pelicula")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=PeliculaRepository::class)
  */
 class Pelicula
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nombre", type="string", length=60, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
     private $nombre;
-
+/**
+    *@ORM\ManyToOne(targetEntity="App\Entity\Alquileres",inversedBy="peliculas") 
+    */
+    private $alquiler;
     /**
-     * @var string
-     *
-     * @ORM\Column(name="sinopsis", type="text", length=0, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $sinopsis;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="precio", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(type="integer")
      */
     private $precio;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="tipoId", type="integer", nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $tipoid;
+    private $tipo;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="generoId", type="integer", nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $generoid;
+    private $genero;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fechaEstreno", type="date", nullable=false)
+     * @ORM\Column(type="datetime")
      */
-    private $fechaestreno;
+    private $fecha_estreno;
 
     public function getId(): ?int
     {
@@ -85,60 +72,58 @@ class Pelicula
         return $this->sinopsis;
     }
 
-    public function setSinopsis(string $sinopsis): self
+    public function setSinopsis(?string $sinopsis): self
     {
         $this->sinopsis = $sinopsis;
 
         return $this;
     }
 
-    public function getPrecio(): ?float
+    public function getPrecio(): ?int
     {
         return $this->precio;
     }
 
-    public function setPrecio(float $precio): self
+    public function setPrecio(int $precio): self
     {
         $this->precio = $precio;
 
         return $this;
     }
 
-    public function getTipoid(): ?int
+    public function getTipo(): ?string
     {
-        return $this->tipoid;
+        return $this->tipo;
     }
 
-    public function setTipoid(int $tipoid): self
+    public function setTipo(string $tipo): self
     {
-        $this->tipoid = $tipoid;
+        $this->tipo = $tipo;
 
         return $this;
     }
 
-    public function getGeneroid(): ?int
+    public function getGenero(): ?string
     {
-        return $this->generoid;
+        return $this->genero;
     }
 
-    public function setGeneroid(int $generoid): self
+    public function setGenero(string $genero): self
     {
-        $this->generoid = $generoid;
+        $this->genero = $genero;
 
         return $this;
     }
 
-    public function getFechaestreno(): ?\DateTimeInterface
+    public function getFechaEstreno(): ?\DateTimeInterface
     {
-        return $this->fechaestreno;
+        return $this->fecha_estreno;
     }
 
-    public function setFechaestreno(\DateTimeInterface $fechaestreno): self
+    public function setFechaEstreno(\DateTimeInterface $fecha_estreno): self
     {
-        $this->fechaestreno = $fechaestreno;
+        $this->fecha_estreno = $fecha_estreno;
 
         return $this;
     }
-
-
 }
