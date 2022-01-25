@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AlquilerController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <h1 class="margin-container">Lista De Alquileres</h1>
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>Valor Total</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Accion</th>
+        </tr>
+        {% for alquiler in alquileres %}
+            <tr>
+                <td>{{ alquiler.valorTotal }}</td>
+                <td>{{ alquiler.fechaInicio|date('Y/m/d') }}</td>
+                <td>{{ alquiler.fechaFin|date('Y/m/d') }}</td>
+                <td><a href="{{ path('alquiler_eliminar', {'id':alquiler.id}) }}">eliminar</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+{% endblock %}

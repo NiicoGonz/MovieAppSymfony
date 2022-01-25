@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PeliculaContollerController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        {%  if editar is defined %}
+        <h1>Editar Pelicula</h1>
+        {% else %}
+        <h1>Crear Pelicula</h1>
+        {% endif %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

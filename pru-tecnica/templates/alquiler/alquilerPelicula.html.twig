@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PeliculaContollerController!{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="container">
+        <form action=" {{path('alquiler_crear')}}" method="post" enctype="multipart/form-data" >
+
+
+            <label for="data[cliente]">Cliente</label>
+            <select class="form-select" aria-label="Default select example" name="data[cliente]">
+                {% for cliente in clientes %}
+                <option value="{{ cliente.id }}">{{ cliente.nombre }}</option>
+                 {% endfor %}
+            </select>
+
+            <label for="fecha_inicio">Fecha de inicio</label>
+            <input type="date" id="password" name="data[fecha_inicio]" class="form-control"/>
+
+            <label for="fecha_fin">Fecha Fin</label>
+            <input type="date" id="password" name="data[fecha_fin]" class="form-control"/>
+
+            <div class="margin-container">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Valor Unitario</th>
+                    <th>Sinposis</th>
+                    <th>Tipo</th>
+                </tr>
+                {% for key , pelicula in app.session.get('peliculas_alquiler') %}
+                    <tr>
+
+                        <td>{{ pelicula.nombre }}</td>
+                        <td>{{ pelicula.precioUnitario }}</td>
+                        <td>{{ pelicula.sinopsis }}</td>
+                        <td>{{ pelicula.tipo }}</td>
+                        <td><a href="{{ path('alquiler_eliminar_pelicula', {'id':key}) }}">Eliminar</a></td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+            </div>
+
+
+            <input type="submit" value="Crear Alquiler" class="btn btn-secondary"/>
+        </form>
+        <a href="{{ path('peliculas') }}" ><button class="btn btn-secondary margin-container">Agregar Pelicula</button></a>
+
+    </div>
+
+
+
+{% endblock %}
