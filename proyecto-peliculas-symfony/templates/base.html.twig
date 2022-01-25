@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Club de peliculas{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" type="text/css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}"/>
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+{% block header %}
+    <nav class="navbar navbar-dark bg-primary justify-content-end">
+        <ul class="nav">
+            <li class="nav-item ">
+                <a class="nav-link active text-white" aria-current="page" href="{{ path( 'ver_peliculas' ) }}">Listado de peliculas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ path( 'gestionar_peliculas' ) }}">Gestionar peliculas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ path( 'gestionar_alquiler' ) }}">Gestionar alquiler</a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}
+{% block body %}
+
+{% endblock %}
+<script src="{{ asset('js/bootstrap.js') }}"/>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container-fluid mt-4 mb-4">
+        <h1 class="text-center">Gestionar alquiler</h1>
+
+        <div class="d-grid gap-2 col-3 mx-auto">
+            <a class="text-white btn btn-primary" href="{{ path( 'ver_alquileres' ) }}">
+                Ver alquileres
+            </a>
+            {% if app.session.get('peliculas_alquiler')|length >=1 %}
+            <a class="text-white btn btn-danger" href="{{ path( 'cancelar_alquiler' ) }}">
+                Cancelar alquiler
+            </a>
+            {% endif %}
+        </div>
+        {% if app.session.get('peliculas_alquiler')|length >=1 %}
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-9 mt-4">
+                <table class="table table-dark table-striped table-hover text-center">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio unitario</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Genero</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                    </thead>
+                    {% for key, pelicula in app.session.get('peliculas_alquiler') %}
+                        <tr>
+                            <td>{{ pelicula.nombre }}</td>
+                            <td>{{ pelicula.precioUnitario }}</td>
+                            <td>{{ pelicula.tipo }}</td>
+                            <td>{{ pelicula.genero }}</td>
+                            <td class="action">
+                                <a class="text-white btn btn-danger"
+                                   href="{{ path( 'eliminar_pelicula_alquiler', {'id':key} ) }}">
+                                    Borrar
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-md-6">
+                <form action="{{ path('crear_alquiler') }}" method="post"  enctype="multipart/form-data">
+                    <label for="cliente" class="form-label mt-3">Selecciona el cliente:</label>
+                    <select class="form-select" size="3" aria-label="size 3 select example" name="data[cliente]">
+                        {% for cliente in clientes %}
+                            <option value="{{  cliente.id }}" >{{ cliente.nombre }} {{ cliente.apellido }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="totalPagar" class="form-label mt-3">Valor a pagar:</label>
+                    <input class="form-control" value="{{ app.session.get('totalPagar') }}" type="text" placeholder="Disabled input"
+                           aria-label="Disabled input example" name="data[valorPagar]" >
+                    <label for="fechaInicio" class="form-label mt-3">Fecha de inicio:</label>
+                    <input type="date" class="form-control" name="data[fechaInicio]">
+                    <label for="fechaFin" class="form-label mt-3">Fecha de fin:</label>
+                    <input type="date" class="form-control" name="data[fechaFin]">
+                    <button type="submit" class="btn btn-primary mt-4">Crear alquiler</button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

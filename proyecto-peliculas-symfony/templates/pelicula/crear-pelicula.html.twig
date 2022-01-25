@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container-fluid pb-4 mt-4">
+        {% if edit is defined %}
+            <h2 class="text-center">Editar Pelicula</h2>
+        {% else %}
+            <h2 class="text-center">Crear pelicula</h2>
+        {% endif %}
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-3">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
