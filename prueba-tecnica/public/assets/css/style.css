@@ -1,0 +1,142 @@
+.example-wrapper {
+    margin: 1em auto;
+    max-width: 1000px;
+    width: 95%;
+    font: 18px/1.5 sans-serif;
+}
+
+.example-wrapper code {
+    background: #F5F5F5;
+    padding: 2px 6px;
+}
+
+#pelicula_fechaEstreno{
+    display: flex;
+}
+
+#pelicula_fechaEstreno select{
+    display: block;
+    width: 100%;
+    padding: .375rem 2.25rem .375rem .75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+    background-image: url(img.svg);
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/*SELECT DE ALQUILAR FECHAINICIO Y FECHAFIN*/
+#alquiler_fechaInicio{
+    display: flex;
+}
+
+#alquiler_fechaInicio select{
+    display: block;
+    width: 100%;
+    padding: .375rem 2.25rem .375rem .75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+    background-image: url(img.svg);
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#alquiler_fechaFin{
+    display: flex;
+}
+
+#alquiler_fechaFin select{
+    display: block;
+    width: 100%;
+    padding: .375rem 2.25rem .375rem .75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+    background-image: url(img.svg);
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.container-crear{
+    margin: 0 auto;
+    width: 60%;
+}
+
+#pelicula_submit{
+    display: block;
+    margin: 20px auto 0;
+    width: 45%;
+}
+
+#submit-login{
+    display: block;
+    margin: 20px auto 0;
+    width: 45%;
+}
+
+#alquiler_submit{
+    display: block;
+    margin: 20px auto 0;
+    width: 45%;
+}
+
+#button-agregar{
+    display: block;
+    margin: 20px auto 0;
+    width: 45%;
+}
+
+#btn-alquiler{
+    display: block;
+    margin: 20px auto 0;
+    width: 45%;
+}
+
+.form-label{
+    width: 49.5%
+}
+
+.container-peliculas{
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.container-cards{
+    margin: 0 auto;
+    width: 100%;
+}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Alquiler !{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <div class="container-crear">
+            <h1>Editar Alquiler 🔠</h1>
+
+            <form method="post" action="{{ path('enviar-alquiler') }}">
+                <label class="form-label" for="clientes">Cliente</label>
+
+
+                <input type="text" class="form-control" name="data[cliente]"
+                       value="{{ cliente.nombre }} {{ cliente.apellidos }}">
+
+                <br>
+                <label class="form-label" for="peliculas">Peliculas para alquilar</label>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio Unitario</th>
+                        <th scope="col">Fecha de Estreno</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for pelicula in peliculas %}
+                        <tr>
+                            <th scope="row">{% if pelicula is not null %} {{ pelicula.nombre }} {% endif %}</th>
+                            <td>{% if pelicula is not null %} {{ pelicula.PrecioUnitario }} {% endif %}</td>
+                            <td>{% if pelicula is not null %} {{ pelicula.fechaEstreno|date('m-d-Y') }} {% endif %}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                <br>
+                <label for="fechaInicio" class="form-label mt-3">Fecha de inicio:
+
+                    <input type="date" class="form-control" name="data[fechaInicio]"
+                           value="{{ alquiler.fechaInicio|date('d-m-Y') }}">
+
+                </label>
+                <label for="fechaFin" class="form-label mt-3">Fecha de fin:
+                    <input type="date" class="form-control" name="data[fechaFin]">
+                </label>
+                <br>
+                <button type="submit" id="btn-alquiler" class="btn btn-success">Crear Alquiler</button>
+            </form>
+            <a href="#" id="btn-alquiler" class="btn btn-danger">Eliminar Compra</a>
+        </div>
+    </div>
+{% endblock %}
