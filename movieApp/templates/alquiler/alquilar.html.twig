@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Crear Alquiler !{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper list-group-flush">
+        <div class="container bg-dark text-white mt-2">
+
+            {#            {% if form is defined %}  {{ form_start(form) }} {% endif %} #}
+            <form method="post" action="{{ path('enviar-alquiler') }}">
+                <label class="form-label" for="clientes">Seleccione el Cliente</label>
+                <select class="form-select" aria-label="Default select example" name="data[cliente]">
+                    {% for cliente in clientes %}
+
+                        <option value="{{ cliente.id }}">{{ cliente.nombre }}</option>
+
+                    {% endfor %}
+                </select>
+                <br>
+                <label class="form-label" for="peliculas">Peliculas para alquilar</label>
+                <table class="table table-striped table-secondary">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio Unitario</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Fecha de Estreno</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for pelicula in app.session.get('peliculas_alquiler') %}
+                        <tr>
+                            <th class="tex-white" scope="row">{% if pelicula is not null %} {{ pelicula.nombre }} {% endif %}</th>
+                            <td>{% if pelicula is not null %} {{ pelicula.PrecioUnitario }} {% endif %}</td>
+                            <td>{% if pelicula is not null %} {{ pelicula.tipo }} {% endif %}</td>
+
+                            <td>{% if pelicula is not null %} {{ pelicula.fechaEstreno|date('m-d-Y') }} {% endif %}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                <br>
+                {% if app.session.get('peliculas_alquiler') is not null %}
+                <label for="fechaInicio" class="form-label mt-3">Fecha de inicio:
+                    <input type="date" class="form-control" name="data[fechaInicio]">
+                </label>
+                <label for="fechaFin" class="form-label mt-3">Fecha de fin:
+                    <input type="date" class="form-control" name="data[fechaFin]">
+                </label>
+                <br>
+                <button type="submit" id="btn-alquiler" class="btn btn-success">Crear Alquiler</button>
+            <a href="{{ path('eliminar-compra') }}" id="btn-alquiler" class="m-2 btn btn-danger">Eliminar Compra</a>
+
+            </form>
+            {% endif %}
+
+            
+        </div>
+    </div>
+    
+{% endblock %}

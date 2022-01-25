@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Peliculas{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <div class="container-cards">
+            <div class="card-group ">
+                {% for pelicula in peliculas %}
+                    <div class="card text-white bg-dark m-2 " style="width: 18rem;">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ pelicula.nombre }}</h3>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                Fecha de estreno: {{ pelicula.fechaEstreno|date('Y-m-d') }}</h6>
+                            <p class="card-text">Sipnosis: {{ pelicula.sipnosis }}</p>
+                            <p>Precio: {{ pelicula.precioUnitario }}</p>
+                            <h6 class="card-subtitle mb-2 text-muted">tipo:{{ pelicula.tipo }}  </h6>
+                            <h6 class="card-subtitle mb-2 text-muted">genero: {{ pelicula.genero }}</h6>
+                            <div class="align-items-end">
+                                <a href="{{ path('alquilar',{'id':pelicula.id}) }}" class="btn btn-success">Alquilar</a>
+                                <a href="{{ path('editar',{'id':pelicula.id }) }}" class="btn btn-primary">Editar</a>
+                                <a href="{{ path('eliminar', {'id':pelicula.id}) }}" class="btn btn-danger">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
