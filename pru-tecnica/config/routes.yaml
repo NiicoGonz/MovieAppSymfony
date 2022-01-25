@@ -1,0 +1,42 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+peliculas:
+  path: /peliculas
+  controller: App\Controller\PeliculaController::index
+
+peliculas_crear:
+  path: /peliculas-crear
+  controller: App\Controller\PeliculaController::crearPelicula
+
+peliculas_eliminar:
+  path: /peliculas-eliminar/{id}
+  controller: App\Controller\PeliculaController::eliminarPelicula
+
+peliculas_editar:
+  path: /peliculas-editar/{id}
+  controller: App\Controller\PeliculaController::editarPelicula
+
+alquiler:
+  path: /alquiler
+  controller: App\Controller\AlquilerController::index
+
+alquiler_pelicula:
+  path: /alquiler-pelicula/{id}
+  controller: App\Controller\AlquilerController::alquilar
+
+alquiler_prueba:
+  path: /alquiler-prueba/
+  controller: App\Controller\AlquilerController::agregarID
+
+alquiler_crear:
+  path: /alquiler_crear/
+  controller: App\Controller\AlquilerController::crearAlquiler
+
+alquiler_eliminar_pelicula:
+  path: /eliminar_pelicula_alquiler/{id}
+  controller: App\Controller\AlquilerController::eliminarPeliculaPreAlquiler
+
+alquiler_eliminar:
+  path: /alquiler-eliminar/{id}
+  controller: App\Controller\AlquilerController::eliminarAlquiler

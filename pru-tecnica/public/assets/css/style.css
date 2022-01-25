@@ -1,0 +1,49 @@
+.crearPelicula{
+    height: 600px;
+    width: 500px;
+    border: 1px solid #eee;
+}
+
+
+.header{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 2fr 4fr ;
+}
+
+.header ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header li{
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.titulo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.margin-container{
+    margin-top: 30px;
+}
+
+.links a{
+    text-decoration: none;
+
+}
+
+#pelicula_submit{
+
+    width: 200px;
+
+}
+
