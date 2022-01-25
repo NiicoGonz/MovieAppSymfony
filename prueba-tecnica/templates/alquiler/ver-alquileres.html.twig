@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de Alquileres{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <div class="container-cards">
+            <h1> Listado de Alquileres </h1>
+            <div class="mb-3 container-peliculas">
+                {% for alquiler in alquileres %}
+                    <div class="card text-center mt-4" style="width: 18rem;">
+                        <div class="card-body">
+                            <h3 class="card-title">Alquiler #: {{ alquiler.id }}</h3>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                Fecha de Inicio: {{ alquiler.fechaInicio|date('Y-m-d') }}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                Fecha Fin: {{ alquiler.fechaFin|date('Y-m-d') }}</h6>
+                            <p class="card-text">Cliente: {{ alquiler.cliente.nombre }}</p>
+                            <p>Precio: {{ alquiler.valorTotal }}</p>
+                            <div class="align-items-end">
+{#                                <a href="{{ path('editar-alquiler', {'id':alquiler.id}) }}" class="btn btn-primary">Editar</a>#}
+                                <a href="{{ path('eliminar-alquiler', {'id':alquiler.id}) }}" class="btn btn-danger">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
