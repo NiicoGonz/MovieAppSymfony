@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Alquileres;
+use App\Entity\Alquiler;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Alquileres|null find($id, $lockMode = null, $lockVersion = null)
- * @method Alquileres|null findOneBy(array $criteria, array $orderBy = null)
- * @method Alquileres[]    findAll()
- * @method Alquileres[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Alquiler|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Alquiler|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Alquiler[]    findAll()
+ * @method Alquiler[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AlquileresRepository extends ServiceEntityRepository
+class AlquilerRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Alquileres::class);
+        parent::__construct($registry, Alquiler::class);
     }
 
     // /**
-    //  * @return Alquileres[] Returns an array of Alquileres objects
+    //  * @return Alquiler[] Returns an array of Alquiler objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class AlquileresRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Alquileres
+    public function findOneBySomeField($value): ?Alquiler
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')
